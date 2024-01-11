@@ -13,6 +13,7 @@ import { FormSubmit } from "./form-submit";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { toast } from "sonner";
+import { FormPicker } from "./form-picker";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -29,20 +30,20 @@ export const FormPopover = ({
 }: FormPopoverProps) => {
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      console.log({data});
+      console.log({ data });
       toast.success("Board created");
     },
     onError: (error) => {
-      console.log({error});
+      console.log({ error });
       toast.error(error);
-    }
-  })
+    },
+  });
 
   const onSubmit = (formData: FormData) => {
-    const title = formData.get('title') as string;
+    const title = formData.get("title") as string;
 
-    execute({ title })
-  }
+    execute({ title });
+  };
 
   return (
     <Popover>
@@ -53,19 +54,20 @@ export const FormPopover = ({
         sideOffset={sideOffset}
         className="w-80 pt-3"
       >
-        <div className="text-sm font-medium text-center text-neutral-600 pb-4">
+        <div className="text-sm font-medium text-center text-neutral-600">
           Create board
         </div>
         <PopoverClose>
-            <Button
-                variant="ghost"
-                className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
-            >
-                <X className="h-4 w-4"/>
-            </Button>
+          <Button
+            variant="ghost"
+            className="h-auto w-auto p-2 absolute top-2 right-2 text-neutral-600"
+          >
+            <X className="h-4 w-4" />
+          </Button>
         </PopoverClose>
         <form action={onSubmit} className="space-y-4">
           <div className="space-y-4">
+            <FormPicker id="image" errors={fieldErrors} />
             <FormInput
               id="title"
               label="Board title"
@@ -73,9 +75,7 @@ export const FormPopover = ({
               errors={fieldErrors}
             />
           </div>
-          <FormSubmit className="w-full">
-            Create
-          </FormSubmit>
+          <FormSubmit className="w-full">Create</FormSubmit>
         </form>
       </PopoverContent>
     </Popover>

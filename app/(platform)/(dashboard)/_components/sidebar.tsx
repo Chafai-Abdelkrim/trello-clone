@@ -13,7 +13,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { NavItem, Organization } from "./nav-item";
 
 interface SidebarProps {
-  storageKey: string;
+  storageKey?: string;
 }
 
 export const Sidebar = ({ storageKey = "t-sidebar-state" }: SidebarProps) => {

@@ -12,7 +12,7 @@
 	<h3> 👇 Check It Out 👇 </h3>
 </div>
 
-[<img alt="screenShot of site" width="900px" src="./public/site-screenshot.png" />]()
+[<img alt="screenShot of site" width="900px" src="./public/site-screenshot.png" />](https://trello-clone-ochre.vercel.app)
 
 ## 📝 Description
 
